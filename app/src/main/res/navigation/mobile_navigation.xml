@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_profile">
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.myattendancetracker.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_attendance"
+        android:name="com.example.myattendancetracker.ui.attendance.AttendanceFragment"
+        android:label="@string/menu_attendance"
+        tools:layout="@layout/fragment_attendance" >
+        <action
+            android:id="@+id/action_nav_attendance_to_nav_date"
+            app:destination="@id/nav_date" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.myattendancetracker.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/nav_date"
+        android:name="com.example.myattendancetracker.ui.dates.DatesFragment"
+        android:label="Attendance"
+        tools:layout="@layout/fragment_dates" >
+        <argument
+            android:name="selected_item"
+            app:argType="com.example.myattendancetracker.db.Attendance" />
+        <argument
+            android:name="position_item"
+            app:argType="integer" />
+
+    </fragment>
+</navigation>
